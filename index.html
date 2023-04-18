@@ -64,43 +64,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-test3" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/04/19/test3/" class="article-date">
-  <time datetime="2023-04-18T17:18:20.000Z" itemprop="datePublished">2023-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/19/test3/">游戏服务端需要解决的问题，整理存档</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>1.网络库(单个玩家的数据交换):<br>I.将传输层的协议（stream-based的TCP协议或packet-based的UDP协议）转换为应用层的消息协议（通常是packet-based）<br>II.为应用层建立IO模型(一个连接好的socket对应一个connector。connector负责向上提供IO相关服务。同时，其借助维护的一块缓存，来实现包的流转。)<br>iii.封装具体的连接细节(发起链接，断开链接，发包等操作)<br>2.网关(多对多玩家的协议交换):不能创建多条socket,只能保持O(1)条连接。<br>乌拉拉内部实现：<a target="_blank" rel="noopener" href="http://git.wll/wulala/entirety/-/tree/develop/wll/fastway">http://git.wll/wulala/entirety/-/tree/develop/wll/fastway</a><br>3.人数负载问题(物理上加机器，逻辑上需要尽量支持水平扩容，但是由于游戏服务器的特殊性，服务器往往存放了玩家的状态，通常无法像无服务的服务器一样动态伸缩和扩容)<br>乌拉拉内部实现战斗serverless:<a target="_blank" rel="noopener" href="http://git.wll/wulala/entirety/-/tree/develop/wll/battle_serverless">http://git.wll/wulala/entirety/-/tree/develop/wll/battle_serverless</a><br>4.因为有3，所以需要负载均衡<br>i.乌拉拉内部根据pid进行了库的水平切分,网关处负责负载<br>ii.转8,分布式服务器相关技术<br>5.各类业务逻辑编写复杂度<br>i.乌拉拉内部使用mdb实现了curd的基本框架，并提供了对应内存地址改变时的回调函数做逻辑处理<br>ii.目前想到的是通过合理运用设计模式对相似逻辑进行抽象，尽可能复用代码<br>6.数据存储<br>i.乌拉拉内部实现:mdb<br>ii.其余用到的技术技术:mysql，redis<br>7.各种玩家状态生命周期的管理<br>8.分布式服务器相关技术<br>i.cap原则的实现以及取舍(redis:读写分离，哨兵机制，集群部署)<br>ii.服务发现<br>iii.分布式事务<br>iiii.etc…<br>还有其他的许多问题，暂时只从以上角度做细化学习，目前不关注运维角度<br>Todo:想到哪写到哪，有一定完成度之后整理一下文档的排版</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/19/test3/" data-id="clgmj3yvu0000f0vhagpm5dnk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-network" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/04/19/network/" class="article-date">
@@ -188,10 +151,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-test3" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2023/04/19/hello-world/" class="article-date">
-  <time datetime="2023-04-18T16:56:27.929Z" itemprop="datePublished">2023-04-19</time>
+    <a href="/2022/04/30/test3/" class="article-date">
+  <time datetime="2022-04-29T17:18:20.000Z" itemprop="datePublished">2022-04-30</time>
 </a>
     
   </div>
@@ -202,7 +165,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/19/hello-world/">Hello World</a>
+      <a class="article-title" href="/2022/04/30/test3/">游戏服务端需要解决的问题，整理存档</a>
     </h1>
   
 
@@ -210,24 +173,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+        <p>1.网络库(单个玩家的数据交换):<br>I.将传输层的协议（stream-based的TCP协议或packet-based的UDP协议）转换为应用层的消息协议（通常是packet-based）<br>II.为应用层建立IO模型(一个连接好的socket对应一个connector。connector负责向上提供IO相关服务。同时，其借助维护的一块缓存，来实现包的流转。)<br>iii.封装具体的连接细节(发起链接，断开链接，发包等操作)<br>2.网关(多对多玩家的协议交换):不能创建多条socket,只能保持O(1)条连接。<br>乌拉拉内部实现：<a target="_blank" rel="noopener" href="http://git.wll/wulala/entirety/-/tree/develop/wll/fastway">http://git.wll/wulala/entirety/-/tree/develop/wll/fastway</a><br>3.人数负载问题(物理上加机器，逻辑上需要尽量支持水平扩容，但是由于游戏服务器的特殊性，服务器往往存放了玩家的状态，通常无法像无服务的服务器一样动态伸缩和扩容)<br>乌拉拉内部实现战斗serverless:<a target="_blank" rel="noopener" href="http://git.wll/wulala/entirety/-/tree/develop/wll/battle_serverless">http://git.wll/wulala/entirety/-/tree/develop/wll/battle_serverless</a><br>4.因为有3，所以需要负载均衡<br>i.乌拉拉内部根据pid进行了库的水平切分,网关处负责负载<br>ii.转8,分布式服务器相关技术<br>5.各类业务逻辑编写复杂度<br>i.乌拉拉内部使用mdb实现了curd的基本框架，并提供了对应内存地址改变时的回调函数做逻辑处理<br>ii.目前想到的是通过合理运用设计模式对相似逻辑进行抽象，尽可能复用代码<br>6.数据存储<br>i.乌拉拉内部实现:mdb<br>ii.其余用到的技术技术:mysql，redis<br>7.各种玩家状态生命周期的管理<br>8.分布式服务器相关技术<br>i.cap原则的实现以及取舍(redis:读写分离，哨兵机制，集群部署)<br>ii.服务发现<br>iii.分布式事务<br>iiii.etc…<br>还有其他的许多问题，暂时只从以上角度做细化学习，目前不关注运维角度<br>Todo:想到哪写到哪，有一定完成度之后整理一下文档的排版</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/19/hello-world/" data-id="clgmj27nj00007ovhc6ex0x2l" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2022/04/30/test3/" data-id="clgmj3yvu0000f0vhagpm5dnk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +206,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">April 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
     </div>
   </div>
 
@@ -268,10 +219,6 @@
       <ul>
         
           <li>
-            <a href="/2023/04/19/test3/">游戏服务端需要解决的问题，整理存档</a>
-          </li>
-        
-          <li>
             <a href="/2023/04/19/network/">network</a>
           </li>
         
@@ -280,7 +227,7 @@
           </li>
         
           <li>
-            <a href="/2023/04/19/hello-world/">Hello World</a>
+            <a href="/2022/04/30/test3/">游戏服务端需要解决的问题，整理存档</a>
           </li>
         
       </ul>
