@@ -5,13 +5,17 @@
   
 
   
-  <title>Hexo</title>
+  <title>network | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="网络:输入一个url发生了什么：应用层，序列化封装协议(pb&#x2F;http)，交给传输层，使用(tcp&#x2F;udp)再做一层封装，包装自己和对方的端口信息，端口信息由操作系统分配。之后交给网络层，封装自己的和对方的ip信息，ip信息是操作系统启动的时候通过dhcp协议分配的。包封好以后，还需要增加一个mac地址，包含自己的mac和所连网关的mac，网关一般是路由器，到某个ip地址应该怎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="network">
+<meta property="og:url" content="http://example.com/2023/04/19/network/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="网络:输入一个url发生了什么：应用层，序列化封装协议(pb&#x2F;http)，交给传输层，使用(tcp&#x2F;udp)再做一层封装，包装自己和对方的端口信息，端口信息由操作系统分配。之后交给网络层，封装自己的和对方的ip信息，ip信息是操作系统启动的时候通过dhcp协议分配的。包封好以后，还需要增加一个mac地址，包含自己的mac和所连网关的mac，网关一般是路由器，到某个ip地址应该怎">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-04-18T17:12:12.000Z">
+<meta property="article:modified_time" content="2023-04-18T17:12:26.665Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -62,9 +66,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-network" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-network" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2023/04/19/network/" class="article-date">
   <time datetime="2023-04-18T17:12:12.000Z" itemprop="datePublished">2023-04-19</time>
@@ -77,8 +79,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/19/network/">network</a>
+    <h1 class="article-title" itemprop="name">
+      network
     </h1>
   
 
@@ -109,98 +111,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-test2" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/04/19/test2/" class="article-date">
-  <time datetime="2023-04-18T17:10:48.000Z" itemprop="datePublished">2023-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/19/test2/">golang</a>
-    </h1>
+    <a href="/2023/04/19/test2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">golang</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>SLICE<br>切片和数组的区别<br>1.数组固定长度，切片是可变长度。<br>2.数组和切片返回的都是拷贝<br>3.数组可以比较，切片不能比较</p>
-<p>for k,v :&#x3D; range slice{<br>slice1 &#x3D; append(slice[:k],slice[k+1:]…)<br>}<br>[k:k+1]  index&#x3D;k<br>切片只能和nil进行比较<br>range的时候，v的地址是不变的<br>使用append的时候，使用原切片的对象获取更新<br>CHANNEL<br>读已关闭的通道：没读完会正常读取，读完了会都出来一个零值<br>写已关闭的通道：会panic<br>关闭已关闭的通道：会panic<br>继承<br>可以通过把一个struct放在另一个struct中通过组合功能来实现继承<br>Go一般通过interface来让一些拥有相同方法的函数实现多态性<br>Go的GMP模型<br>G是goroutine的缩写，保存现场恢复需要的寄存器<br>M是一个线程，每个M都有一个线程的栈<br>P是一个抽象的概念，是一个处理器，不是物理意义上的cpu<br>P会先创建一个g，g会挂载在自己的本地队列或者全局队列上。然后唤醒一个M<br>M被唤醒后会去找P进行handoff的操作绑定，然后执行P上面本地队列的g，如果p上面的本地队列没有g，则会进行work stealing操作，去其他的P上面进行窃取，如果其他的p上面也没有，就会去全局队列去拿G，这个是会上锁的。拿的数量是<br>Min(gqMaxlen&#x2F;MaxProcessNum,gqMaxlen&#x2F;2)<br>如果M和P已经绑定，但是没有G可以执行，这个时候M就会处于自旋状态，不断寻找G<br>如果执行G的时候，时间片已经结束，或者触发了系统调用的话，M则会和P解绑，与当前的G绑定。而P会去唤醒一个新的M，如果目前没有M的话，就会把自己加入到空闲线程P队列，等待新的M被创建，或者空闲的M将自己绑定<br>Map<br>数组+bucket，每个bucket数量为8，欠一个哈希算法<br>Mutex<br>乐观锁、悲观锁，cas机制，不是可重入锁</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/19/test2/" data-id="clgmiw8f600012cvhc1ipa2za" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2023/04/19/hello-world/" class="article-date">
-  <time datetime="2023-04-18T16:56:27.929Z" itemprop="datePublished">2023-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/04/19/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2023/04/19/hello-world/" data-id="clgmimkow0000mwvhdbsd78h0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
 
 </section>
         
